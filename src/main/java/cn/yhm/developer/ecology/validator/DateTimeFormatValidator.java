@@ -15,11 +15,24 @@ import java.util.Locale;
  */
 public class DateTimeFormatValidator implements ConstraintValidator<DateTimeFormatValidate, String> {
 
+    /**
+     * 日期格式
+     */
     private String format;
+
+    /**
+     * 日期转换时是否启用宽容模式
+     * <p>
+     * false 严格模式（缺省值）
+     * <p>
+     * true 宽容模式
+     */
+    private boolean lenient;
 
     @Override
     public void initialize(DateTimeFormatValidate validate) {
         this.format = validate.format();
+        this.lenient = validate.lenient();
     }
 
     @Override
@@ -32,8 +45,8 @@ public class DateTimeFormatValidator implements ConstraintValidator<DateTimeForm
         // 如果转换日期转换成功则校验通过，否则报异常则校验不通过
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
-            // 设置严格模式，关闭宽松模式
-            dateFormat.setLenient(false);
+            // 设置日期转换时是否宽松模式
+            dateFormat.setLenient(lenient);
             dateFormat.parse(value);
             return true;
         } catch (Exception e) {

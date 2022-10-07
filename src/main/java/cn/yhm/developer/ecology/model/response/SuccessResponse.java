@@ -1,4 +1,4 @@
-package cn.yhm.developer.ecology.bean.response;
+package cn.yhm.developer.ecology.model.response;
 
 import cn.yhm.developer.ecology.constant.ErrorCode;
 import com.fasterxml.jackson.annotation.JsonProperty;

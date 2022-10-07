@@ -42,7 +42,7 @@ public enum LogApiType {
     private final Integer code;
 
     /**
-     * 接口类型描述
+     * 接口类型  描述
      */
     private final String type;
 

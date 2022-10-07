@@ -1,4 +1,4 @@
-package cn.yhm.developer.ecology.bean.request;
+package cn.yhm.developer.ecology.model.request;
 
 /**
  * 分页请求接口

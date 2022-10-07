@@ -1,6 +1,7 @@
 package cn.yhm.developer.ecology.aspect;
 
-import cn.yhm.developer.ecology.bean.response.ErrorResponse;
+import cn.yhm.developer.ecology.constant.ErrorCode;
+import cn.yhm.developer.ecology.model.response.ErrorResponse;
 import cn.yhm.developer.ecology.constant.SystemConstants;
 import cn.yhm.developer.ecology.exception.EcologyException;
 import lombok.extern.slf4j.Slf4j;
@@ -30,15 +31,14 @@ public class EcologyExceptionAspect {
      * <p>
      * HTTP Code 500
      *
-     * @param e Error异常
+     * @param e Error 错误
      * @return {@link ErrorResponse}
      */
     @ExceptionHandler(value = Error.class)
     @ResponseStatus(value = HttpStatus.NOT_IMPLEMENTED)
     public ErrorResponse handle(Error e) {
         log.error(e.getMessage());
-        // TODO: 待完善
-        return ErrorResponse.builder().errorCode("HD.111").errorMsg("Error级别异常处理").build();
+        return ErrorResponse.builder().errorCode(ErrorCode.ERROR).errorMsg("An error occurred during program running").build();
     }
 
     /**
@@ -52,8 +52,8 @@ public class EcologyExceptionAspect {
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorResponse handle(Exception e) {
-        // TODO: 待完善
-        return ErrorResponse.builder().errorCode("HD.222").errorMsg("默认异常处理（Exception级别）").build();
+        log.error(e.getMessage());
+        return ErrorResponse.builder().errorCode(ErrorCode.DEFAULT_EXCEPTION).errorMsg("An exception occurred during program running").build();
     }
 
     /**
@@ -71,9 +71,9 @@ public class EcologyExceptionAspect {
         // 参数校验提示信息
         String message = e.getFieldError().getDefaultMessage();
         // 错误提示信息
-        String format = String.format(SystemConstants.Error.ARGUMENT_VALIDATE_ERROR_MSG_FORMAT, field, message);
-        // TODO: 待完善
-        return ErrorResponse.builder().errorCode("HD.333").errorMsg(format).build();
+        message = String.format(SystemConstants.Error.ARGUMENT_VALIDATE_ERROR_MSG_FORMAT, field, message);
+
+        return ErrorResponse.builder().errorCode(ErrorCode.ARGUMENT_INVALID).errorMsg(message).build();
     }
 
     /**
@@ -87,8 +87,7 @@ public class EcologyExceptionAspect {
     @ExceptionHandler(value = EcologyException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorResponse handle(EcologyException e) {
-        // TODO: 待完善
-        return ErrorResponse.builder().errorCode("HD.444").errorMsg("自定义异常处理").build();
+        return ErrorResponse.builder().errorCode(e.getErrorCode()).errorMsg(e.getErrorMsg()).build();
     }
 
     /**
@@ -102,8 +101,7 @@ public class EcologyExceptionAspect {
     @ExceptionHandler(value = NoHandlerFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ErrorResponse handle(NoHandlerFoundException e) {
-        // TODO: 待完善
-        return ErrorResponse.builder().errorCode("HD.555").errorMsg("资源未找到异常处理.").build();
+        return ErrorResponse.builder().errorCode(ErrorCode.RESOURCE_NOT_FIND).errorMsg("The current access resource is not found").build();
     }
 
 }

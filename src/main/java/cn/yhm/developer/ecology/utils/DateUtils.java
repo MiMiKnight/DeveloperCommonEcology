@@ -2,7 +2,6 @@ package cn.yhm.developer.ecology.utils;
 
 import cn.yhm.developer.ecology.constant.DateTimeFormat;
 import cn.yhm.developer.ecology.constant.TimeZoneGMT;
-import cn.yhm.developer.ecology.exception.EcologyException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.text.ParseException;
@@ -25,17 +24,18 @@ public class DateUtils {
 
     /**
      * OffsetDateTime转日期字符串
+     *
+     * @param offsetDateTime offsetDateTime时间对象
+     * @param format         格式
+     * @param locale         语言环境
+     * @return {@link String} 日期字符串
+     * @throws NullPointerException 空指针异常
      */
-    public static String convertOffsetDateTime2Str(OffsetDateTime offsetDateTime, String format, Locale locale) throws Exception {
+    public static String convertOffsetDateTime2Str(OffsetDateTime offsetDateTime, String format, Locale locale) throws NullPointerException {
         if (offsetDateTime == null) {
             throw new NullPointerException("offsetDateTime");
         }
-        try {
-            return offsetDateTime.format(DateTimeFormatter.ofPattern(format, locale));
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new EcologyException("", "");
-        }
+        return offsetDateTime.format(DateTimeFormatter.ofPattern(format, locale));
     }
 
     /**
@@ -44,18 +44,11 @@ public class DateUtils {
      * @param date   日期字符串
      * @param format 日期格式
      * @param locale 语言环境
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link OffsetDateTime} OffsetDateTime时间对象
      */
-    public static OffsetDateTime convertStr2OffsetDateTime(String date, String format, Locale locale) throws Exception {
+    public static OffsetDateTime convertStr2OffsetDateTime(String date, String format, Locale locale) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, locale);
-        try {
-            return OffsetDateTime.parse(date, formatter);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            // TODO: 待完善
-            throw new EcologyException("", "java");
-        }
+        return OffsetDateTime.parse(date, formatter);
     }
 
     /**
@@ -65,10 +58,9 @@ public class DateUtils {
      *
      * @param date   日期字符串
      * @param format 日期格式
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link OffsetDateTime} OffsetDateTime时间对象
      */
-    public static OffsetDateTime convertStr2OffsetDateTime(String date, String format) throws Exception {
+    public static OffsetDateTime convertStr2OffsetDateTime(String date, String format) {
         return convertStr2OffsetDateTime(date, format, Locale.ENGLISH);
     }
 
@@ -80,10 +72,9 @@ public class DateUtils {
      * 默认字符串日期格式：yyyy-MM-dd HH:mm:ss.SSS Z
      *
      * @param date 日期字符串
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link OffsetDateTime} OffsetDateTime时间对象
      */
-    public static OffsetDateTime convertStr2OffsetDateTime(String date) throws Exception {
+    public static OffsetDateTime convertStr2OffsetDateTime(String date) {
         return convertStr2OffsetDateTime(date, DateTimeFormat.STANDARD_4, Locale.ENGLISH);
     }
 
@@ -93,18 +84,11 @@ public class DateUtils {
      * @param date   日期字符串
      * @param format 日期格式
      * @param locale 语言环境
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link ZonedDateTime} ZonedDateTime时间对象
      */
-    public static ZonedDateTime convertStr2ZonedDateTime(String date, String format, Locale locale) throws Exception {
+    public static ZonedDateTime convertStr2ZonedDateTime(String date, String format, Locale locale) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, locale);
-        try {
-            return ZonedDateTime.parse(date, formatter);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            // TODO: 待完善
-            throw new EcologyException("", "java");
-        }
+        return ZonedDateTime.parse(date, formatter);
     }
 
     /**
@@ -114,10 +98,9 @@ public class DateUtils {
      *
      * @param date   日期字符串
      * @param format 日期格式
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link ZonedDateTime} ZonedDateTime时间对象
      */
-    public static ZonedDateTime convertStr2ZonedDateTime(String date, String format) throws Exception {
+    public static ZonedDateTime convertStr2ZonedDateTime(String date, String format) {
         return convertStr2ZonedDateTime(date, format, Locale.ENGLISH);
     }
 
@@ -129,10 +112,9 @@ public class DateUtils {
      * 默认字符串日期格式：yyyy-MM-dd HH:mm:ss.SSS Z
      *
      * @param date 日期字符串
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link ZonedDateTime} ZonedDateTime时间对象
      */
-    public static ZonedDateTime convertStr2ZonedDateTime(String date) throws Exception {
+    public static ZonedDateTime convertStr2ZonedDateTime(String date) {
         return convertStr2ZonedDateTime(date, DateTimeFormat.STANDARD_4, Locale.ENGLISH);
     }
 
@@ -144,22 +126,16 @@ public class DateUtils {
      * @param zone   Date对象的时区（此处设置的时区可
      *               能会由于调用parse()解析方法而被覆盖）
      * @param local  语言环境
-     * @return {@link Date}
-     * @throws EcologyException 自定义异常
+     * @return {@link Date} Date时间对象
+     * @throws ParseException 日期解析异常
      */
-    public static Date convertStr2Date(String date, String format, TimeZone zone, Locale local) throws Exception {
+    public static Date convertStr2Date(String date, String format, TimeZone zone, Locale local) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat(format, local);
         // 关闭宽松模式，开启严格模式
         dateFormat.setLenient(false);
         // 设置Date对象的时区 (由此方法设置的TimeZone可能会由于调用parse()解析方法而被覆盖。)
         dateFormat.setTimeZone(zone);
-        try {
-            return dateFormat.parse(date);
-        } catch (ParseException e) {
-            log.error(e.getMessage());
-            // TODO: 待完善
-            throw new EcologyException("", "java");
-        }
+        return dateFormat.parse(date)      ;
     }
 
     /**
@@ -170,10 +146,10 @@ public class DateUtils {
      * @param date   日期字符串
      * @param format 日期格式
      * @param zone   Date对象的时区（此处设置的时区可能会由于调用parse()解析方法而被覆盖）
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link Date} Date时间对象
+     * @throws ParseException 日期解析异常
      */
-    public static Date convertStr2Date(String date, String format, TimeZone zone) throws Exception {
+    public static Date convertStr2Date(String date, String format, TimeZone zone) throws ParseException {
         return convertStr2Date(date, format, zone, Locale.ENGLISH);
     }
 
@@ -185,10 +161,10 @@ public class DateUtils {
      * @param date    日期字符串
      * @param format  日期格式
      * @param zoneGMT Date对象的时区（此处设置的时区可能会由于调用parse()解析方法而被覆盖）
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link Date} Date时间对象
+     * @throws ParseException 日期解析异常
      */
-    public static Date convertStr2Date(String date, String format, String zoneGMT) throws Exception {
+    public static Date convertStr2Date(String date, String format, String zoneGMT) throws ParseException {
         return convertStr2Date(date, format, TimeZone.getTimeZone(zoneGMT), Locale.ENGLISH);
     }
 
@@ -202,10 +178,10 @@ public class DateUtils {
      * 默认字符串日期格式：yyyy-MM-dd HH:mm:ss
      *
      * @param date 日期字符串
-     * @return {@link ZonedDateTime}
-     * @throws EcologyException 自定义异常
+     * @return {@link Date} Date时间对象
+     * @throws ParseException 日期解析异常
      */
-    public static Date convertStr2DateUTC(String date) throws Exception {
+    public static Date convertStr2DateUTC(String date) throws ParseException {
         return convertStr2Date(date, DateTimeFormat.STANDARD_1, TimeZone.getTimeZone(TimeZoneGMT.GMT_0), Locale.ENGLISH);
     }
 

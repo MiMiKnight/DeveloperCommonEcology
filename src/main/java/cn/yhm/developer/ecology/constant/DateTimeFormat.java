@@ -44,4 +44,9 @@ public interface DateTimeFormat {
      * 年-月-日
      */
     String STANDARD_5 = "yyyy-MM-dd";
+
+    /**
+     * 年/月/日
+     */
+    String STANDARD_6 = "yyyy/MM/dd";
 }

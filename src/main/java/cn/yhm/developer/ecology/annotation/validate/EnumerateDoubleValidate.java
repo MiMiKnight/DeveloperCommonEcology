@@ -1,7 +1,6 @@
 package cn.yhm.developer.ecology.annotation.validate;
 
-import cn.yhm.developer.ecology.constant.DateTimeFormat;
-import cn.yhm.developer.ecology.validator.DateTimeFormatValidator;
+import cn.yhm.developer.ecology.validator.EnumerateDoubleValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -12,30 +11,28 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 日期时间格式
+ * 枚举校验注解
  *
  * @author victor2015yhm@gmail.com
- * @since 2022-09-05 01:35:09
+ * @since 2022-09-05 07:00:05
  */
 @Documented
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {DateTimeFormatValidator.class})
-public @interface DateTimeFormatValidate {
+@Constraint(validatedBy = {EnumerateDoubleValidator.class})
+public @interface EnumerateDoubleValidate {
 
     /**
-     * 待校验的日期格式
+     * 枚举数组
      */
-    String format() default DateTimeFormat.STANDARD_4;
+    double[] value() default {};
 
     /**
-     * 日期转换时是否启用宽容模式
+     * 精确度
      * <p>
-     * false 严格模式（缺省值）
-     * <p>
-     * true 宽容模式
+     * 默认精确度 10e-3D
      */
-    boolean lenient() default false;
+    double delta() default 10e-3D;
 
     String message() default "The parameter value is invalid";
 

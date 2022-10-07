@@ -1,4 +1,4 @@
-package cn.yhm.developer.ecology.bean.response;
+package cn.yhm.developer.ecology.model.response;
 
 /**
  * 响应接口

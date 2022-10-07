@@ -1,4 +1,4 @@
-package cn.yhm.developer.ecology.bean.response;
+package cn.yhm.developer.ecology.model.response;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

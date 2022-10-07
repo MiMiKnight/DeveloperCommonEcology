@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.annotation.validate;
 
-import cn.yhm.developer.ecology.validator.EnumerateValidator;
+import cn.yhm.developer.ecology.validator.EnumerateLongValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -19,12 +19,12 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {EnumerateValidator.class})
-public @interface EnumerateValidate {
+@Constraint(validatedBy = {EnumerateLongValidator.class})
+public @interface EnumerateLongValidate {
 
-    String[] value() default "";
+    long[] value() default {};
 
-    String message() default "The date time is ";
+    String message() default "The parameter value is invalid";
 
     Class<?>[] groups() default {};
 
