@@ -1,5 +1,6 @@
 package cn.yhm.developer.ecology.constant;
 
+import cn.yhm.developer.ecology.aspect.EcologyExceptionAspect;
 import cn.yhm.developer.ecology.aspect.RequestLogAspect;
 import cn.yhm.developer.ecology.aspect.RequestTraceAspect;
 
@@ -24,4 +25,5 @@ public interface AspectOrder {
      * @see RequestLogAspect
      */
     int ORDER_1001 = 1001;
+    
 }

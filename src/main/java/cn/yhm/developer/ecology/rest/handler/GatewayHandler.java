@@ -15,6 +15,7 @@ public interface GatewayHandler<R extends GatewayRequest, T extends GatewayRespo
      *
      * @param request 请求
      * @return 响应
+     * @throws Exception 异常
      */
-    T handle(R request);
+    T handle(R request) throws Exception;
 }
