@@ -44,7 +44,7 @@ public class RequestTraceAspect implements Ordered {
      */
     @Before("pointcut()")
     public void doBefore() {
-        String uuid = UUID.randomUUID().toString().replace("-", "");
+        String uuid = UUID.randomUUID().toString();
         // 设置当前请求线程中的跟踪ID
         MDC.put(EcologyConstants.Log.MDC_TRACE_ID_KEY, uuid);
     }
