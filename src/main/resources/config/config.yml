@@ -1,0 +1,15 @@
+# config.yml
+
+app:
+  # VM配置
+  VmOption:
+    key:
+      timezone: user.timezone
+      encoding: file.encoding
+    value:
+      timezone: GMT+00:00
+      encoding: UTF-8
+  # 环境变量
+  environment:
+    key:
+      app_name: app.name
