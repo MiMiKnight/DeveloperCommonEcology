@@ -1,16 +1,25 @@
 package cn.yhm.developer.ecology.aspect;
 
 
-import cn.yhm.developer.ecology.constant.AspectOrder;
-import cn.yhm.developer.ecology.constant.AspectRule;
+import cn.yhm.developer.ecology.constant.EcologyAspectOrder;
+import cn.yhm.developer.ecology.constant.EcologyAspectRule;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 请求日志切面
@@ -26,7 +35,7 @@ public class RequestLogAspect implements Ordered {
     /**
      * 切入规则
      */
-    private final String rule = AspectRule.RULE_2;
+    private final String rule = EcologyAspectRule.RULE_2;
 
     /**
      * 切入点
@@ -44,8 +53,19 @@ public class RequestLogAspect implements Ordered {
         log.info("RequestLogAspect...doBefore...");
     }
 
+    /**
+     * 环绕通知
+     */
+    @Around("pointcut()")
+    public Object doAround(ProceedingJoinPoint point) throws Throwable {
+        log.info("RequestLogAspect...doAround...111111");
+        Object proceed = point.proceed();
+        log.info("RequestLogAspect...doAround...222222");
+        return proceed;
+    }
+
     @Override
     public int getOrder() {
-        return AspectOrder.ORDER_1001;
+        return EcologyAspectOrder.ORDER_1001;
     }
 }

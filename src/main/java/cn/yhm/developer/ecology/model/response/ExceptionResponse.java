@@ -12,10 +12,10 @@ import lombok.Setter;
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 09:40:47
  */
+@Builder
 @Getter
 @Setter
-@Builder
-public class ErrorResponse implements GatewayResponse {
+public class ExceptionResponse implements GatewayResponse {
 
     /**
      * 错误码

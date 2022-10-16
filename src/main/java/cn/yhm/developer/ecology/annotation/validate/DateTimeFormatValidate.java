@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.annotation.validate;
 
-import cn.yhm.developer.ecology.constant.DateTimeFormat;
+import cn.yhm.developer.ecology.constant.DateTimeFormatPattern;
 import cn.yhm.developer.ecology.validator.DateTimeFormatValidator;
 
 import javax.validation.Constraint;
@@ -26,7 +26,7 @@ public @interface DateTimeFormatValidate {
     /**
      * 待校验的日期格式
      */
-    String format() default DateTimeFormat.STANDARD_4;
+    String format() default DateTimeFormatPattern.STANDARD_4;
 
     /**
      * 日期转换时是否启用宽容模式

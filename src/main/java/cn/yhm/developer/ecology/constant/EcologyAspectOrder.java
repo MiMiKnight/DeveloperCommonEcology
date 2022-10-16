@@ -14,7 +14,7 @@ import cn.yhm.developer.ecology.aspect.RequestTraceAspect;
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 20:08:20
  */
-public interface AspectOrder {
+public interface EcologyAspectOrder {
 
     /**
      * @see RequestTraceAspect
@@ -25,5 +25,5 @@ public interface AspectOrder {
      * @see RequestLogAspect
      */
     int ORDER_1001 = 1001;
-    
+
 }

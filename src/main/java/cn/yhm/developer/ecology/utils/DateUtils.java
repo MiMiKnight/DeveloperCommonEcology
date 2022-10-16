@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.utils;
 
-import cn.yhm.developer.ecology.constant.DateTimeFormat;
+import cn.yhm.developer.ecology.constant.DateTimeFormatPattern;
 import cn.yhm.developer.ecology.constant.TimeZoneGMT;
 import lombok.extern.slf4j.Slf4j;
 
@@ -75,7 +75,7 @@ public class DateUtils {
      * @return {@link OffsetDateTime} OffsetDateTime时间对象
      */
     public static OffsetDateTime convertStr2OffsetDateTime(String date) {
-        return convertStr2OffsetDateTime(date, DateTimeFormat.STANDARD_4, Locale.ENGLISH);
+        return convertStr2OffsetDateTime(date, DateTimeFormatPattern.STANDARD_4, Locale.ENGLISH);
     }
 
     /**
@@ -115,7 +115,7 @@ public class DateUtils {
      * @return {@link ZonedDateTime} ZonedDateTime时间对象
      */
     public static ZonedDateTime convertStr2ZonedDateTime(String date) {
-        return convertStr2ZonedDateTime(date, DateTimeFormat.STANDARD_4, Locale.ENGLISH);
+        return convertStr2ZonedDateTime(date, DateTimeFormatPattern.STANDARD_4, Locale.ENGLISH);
     }
 
     /**
@@ -182,7 +182,7 @@ public class DateUtils {
      * @throws ParseException 日期解析异常
      */
     public static Date convertStr2DateUTC(String date) throws ParseException {
-        return convertStr2Date(date, DateTimeFormat.STANDARD_1, TimeZone.getTimeZone(TimeZoneGMT.GMT_0), Locale.ENGLISH);
+        return convertStr2Date(date, DateTimeFormatPattern.STANDARD_1, TimeZone.getTimeZone(TimeZoneGMT.GMT_0), Locale.ENGLISH);
     }
 
 }

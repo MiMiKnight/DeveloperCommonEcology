@@ -1,9 +1,9 @@
 package cn.yhm.developer.ecology.aspect;
 
 
-import cn.yhm.developer.ecology.constant.AspectOrder;
-import cn.yhm.developer.ecology.constant.AspectRule;
-import cn.yhm.developer.ecology.constant.SystemConstants;
+import cn.yhm.developer.ecology.constant.EcologyAspectOrder;
+import cn.yhm.developer.ecology.constant.EcologyAspectRule;
+import cn.yhm.developer.ecology.constant.EcologyConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -29,7 +29,7 @@ public class RequestTraceAspect implements Ordered {
     /**
      * 切入规则
      */
-    private final String rule = AspectRule.RULE_1;
+    private final String rule = EcologyAspectRule.RULE_1;
 
     /**
      * 切入点
@@ -43,8 +43,9 @@ public class RequestTraceAspect implements Ordered {
      */
     @Before("pointcut()")
     public void doBefore() {
+        String uuid = UUID.randomUUID().toString().replace("-", "");
         // 设置当前请求线程中的跟踪ID
-        MDC.put(SystemConstants.Log.MDC_TRACE_ID_KEY, UUID.randomUUID().toString());
+        MDC.put(EcologyConstants.Log.MDC_TRACE_ID_KEY, uuid);
     }
 
     /**
@@ -58,6 +59,6 @@ public class RequestTraceAspect implements Ordered {
 
     @Override
     public int getOrder() {
-        return AspectOrder.ORDER_1000;
+        return EcologyAspectOrder.ORDER_1000;
     }
 }

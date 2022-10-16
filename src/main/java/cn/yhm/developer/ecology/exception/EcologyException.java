@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class EcologyException extends Exception {
+public class EcologyException extends RuntimeException {
 
     /**
      * 异常错误码
@@ -23,12 +23,14 @@ public class EcologyException extends Exception {
      */
     private String errorMsg;
 
-    public EcologyException() {
-        super();
-    }
-
+    /**
+     * 自定义全局异常
+     *
+     * @param errorCode 错误码
+     * @param errorMsg  错误提示信息
+     */
     public EcologyException(String errorCode, String errorMsg) {
-        this();
+        super(errorMsg);
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
     }

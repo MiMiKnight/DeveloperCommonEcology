@@ -131,10 +131,22 @@ public interface TimeZoneGMT {
      * 中国的时区分类
      */
     interface China {
+
         /**
          * 北京时区
          */
-        String Beijing = GMT_P_8;
+        String BEIJING = GMT_P_8;
+    }
+
+    /**
+     * 英国的时区分类
+     */
+    interface UK {
+
+        /**
+         * 格林尼治时区
+         */
+        String GREENWICH = GMT_0;
     }
 
     /**
@@ -185,5 +197,5 @@ public interface TimeZoneGMT {
         String HST = GMT_N_10;
 
     }
-    
+
 }

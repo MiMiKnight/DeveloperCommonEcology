@@ -37,8 +37,7 @@ public class DateTimeFormatValidator implements ConstraintValidator<DateTimeForm
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        // 如果参数被校验参数为null则校验不通过
-        // 如果format为null或者为空则校验不通过
+        // 如果参数被校验参数为null且format为null或者为空则校验不通过
         if (value == null || format == null || "".equals(format.trim())) {
             return false;
         }

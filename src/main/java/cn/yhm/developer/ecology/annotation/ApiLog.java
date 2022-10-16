@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.annotation;
 
-import cn.yhm.developer.ecology.constant.LogApiType;
+import cn.yhm.developer.ecology.constant.ApiType;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -27,8 +27,8 @@ public @interface ApiLog {
 
     /**
      * 接口类型
-     * 增（add）、删()、改（update）、查（query）
+     * 增（save）、删(delete)、改（update）、查（query）
      */
-    LogApiType type() default LogApiType.Unknown;
+    ApiType type() default ApiType.Unknown;
 
 }

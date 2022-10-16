@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.model.response;
 
-import cn.yhm.developer.ecology.constant.ErrorCode;
+import cn.yhm.developer.ecology.constant.EcologyExceptionCode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +21,7 @@ public class SuccessResponse implements GatewayResponse {
      * 成功响应码
      */
     @JsonProperty(value = "success_code", index = 1, access = JsonProperty.Access.READ_ONLY)
-    private String successCode = ErrorCode.SUCCESS;
+    private String successCode = EcologyExceptionCode.SUCCESS;
 
     /**
      * 成功提示消息

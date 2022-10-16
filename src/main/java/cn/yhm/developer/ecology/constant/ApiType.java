@@ -3,13 +3,13 @@ package cn.yhm.developer.ecology.constant;
 import lombok.Getter;
 
 /**
- * 日志接口类型
+ * 接口类型
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 00:59:03
  */
 @Getter
-public enum LogApiType {
+public enum ApiType {
 
     /**
      * 未知
@@ -17,9 +17,9 @@ public enum LogApiType {
     Unknown(0, "unknown"),
 
     /**
-     * 增加接口
+     * 保存接口
      */
-    Add(1, "add"),
+    Save(1, "save"),
 
     /**
      * 删除接口
@@ -46,7 +46,7 @@ public enum LogApiType {
      */
     private final String type;
 
-    LogApiType(Integer code, String type) {
+    ApiType(Integer code, String type) {
         this.code = code;
         this.type = type;
     }
