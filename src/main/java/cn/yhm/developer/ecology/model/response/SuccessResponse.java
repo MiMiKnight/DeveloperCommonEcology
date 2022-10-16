@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 成功响应
+ * 成功响应参数类
  * <p>
  * 本响应只有在原本业务的响应没有任何出参时才建议使用
  *

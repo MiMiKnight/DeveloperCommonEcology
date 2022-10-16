@@ -1,7 +1,7 @@
 package cn.yhm.developer.ecology.model.request;
 
 /**
- * 分页请求接口
+ * 分页请求参数接口
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 09:34:35

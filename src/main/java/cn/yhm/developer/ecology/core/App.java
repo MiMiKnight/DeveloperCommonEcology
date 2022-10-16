@@ -15,9 +15,17 @@ import java.util.Properties;
 @Slf4j
 public class App {
 
+    private interface ExceptionMessage {
+        String MSG_001 = "The appClass or args can not be null";
+        String MSG_002 = "The project {} started successfully";
+        String MSG_003 = "VM Option: [-Duser.timezone] value should be {}";
+        String MSG_004 = "VM Option: [-Dfile.encoding] value should be {}";
+        String MSG_005 = "VM Option: [-Dapp.name] should be set";
+    }
+
     public static void run(Class<?> appClass, String[] args) {
         if (null == appClass || null == args) {
-            log.error("appClass or args can not be null");
+            log.error(ExceptionMessage.MSG_001);
             System.exit(-1);
         }
         // 环境变量
@@ -29,7 +37,7 @@ public class App {
         // 项目名称
         String appName = properties.getProperty(EcologyConstants.VmOption.APP_NAME_KEY);
         // 打印启动成功日志
-        log.info("The project {} started successfully.", appName);
+        log.info(ExceptionMessage.MSG_002, appName);
     }
 
     private static void check(Properties properties) {
@@ -41,15 +49,15 @@ public class App {
         String appName = properties.getProperty(EcologyConstants.VmOption.APP_NAME_KEY);
 
         if (!EcologyConstants.VmOption.TIMEZONE_VALUE.equalsIgnoreCase(timezone)) {
-            log.error("VM Option: [-Duser.timezone] value should be {}", EcologyConstants.VmOption.TIMEZONE_VALUE);
+            log.error(ExceptionMessage.MSG_003, EcologyConstants.VmOption.TIMEZONE_VALUE);
             System.exit(-1);
         }
         if (!EcologyConstants.VmOption.ENCODING_VALUE.equalsIgnoreCase(encoding)) {
-            log.error("VM Option: [-Dfile.encoding] value should be {}", EcologyConstants.VmOption.ENCODING_VALUE);
+            log.error(ExceptionMessage.MSG_004, EcologyConstants.VmOption.ENCODING_VALUE);
             System.exit(-1);
         }
         if (null == appName) {
-            log.error("VM Option: [-Dapp.name] should be set");
+            log.error(ExceptionMessage.MSG_005);
             System.exit(-1);
         }
     }

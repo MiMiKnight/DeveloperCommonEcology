@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 程序产生异常时的响应
+ * 程序发生异常时的响应参数类
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 09:40:47
