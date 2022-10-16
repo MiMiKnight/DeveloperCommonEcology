@@ -1,4 +1,4 @@
-package cn.yhm.developer.ecology.constant;
+package cn.yhm.developer.ecology.common.constant;
 
 /**
  * 时间日期时间格式

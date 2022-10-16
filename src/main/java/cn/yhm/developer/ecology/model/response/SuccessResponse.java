@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.model.response;
 
-import cn.yhm.developer.ecology.constant.EcologyExceptionCode;
+import cn.yhm.developer.ecology.common.constant.EcologyExceptionCode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;

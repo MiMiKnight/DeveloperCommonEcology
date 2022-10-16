@@ -30,7 +30,7 @@ public @interface EnumerateDoubleValidate {
     /**
      * 精确度
      * <p>
-     * 默认精确度 10e-3D
+     * 默认精确度 10负3次方（10e-3D）
      */
     double delta() default 10e-3D;
 

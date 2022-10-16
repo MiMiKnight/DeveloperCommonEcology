@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.annotation;
 
-import cn.yhm.developer.ecology.constant.ApiType;
+import cn.yhm.developer.ecology.common.enumeration.ApiType;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

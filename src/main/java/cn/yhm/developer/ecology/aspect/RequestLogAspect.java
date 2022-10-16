@@ -1,25 +1,18 @@
 package cn.yhm.developer.ecology.aspect;
 
 
-import cn.yhm.developer.ecology.constant.EcologyAspectOrder;
-import cn.yhm.developer.ecology.constant.EcologyAspectRule;
+import cn.yhm.developer.ecology.common.constant.EcologyAspectOrder;
+import cn.yhm.developer.ecology.common.constant.EcologyAspectRule;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.Ordered;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 请求日志切面
@@ -66,6 +59,6 @@ public class RequestLogAspect implements Ordered {
 
     @Override
     public int getOrder() {
-        return EcologyAspectOrder.ORDER_1001;
+        return EcologyAspectOrder.ORDER_101;
     }
 }

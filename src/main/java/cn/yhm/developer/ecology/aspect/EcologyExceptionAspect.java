@@ -1,7 +1,7 @@
 package cn.yhm.developer.ecology.aspect;
 
-import cn.yhm.developer.ecology.constant.EcologyConstants;
-import cn.yhm.developer.ecology.constant.EcologyExceptionCode;
+import cn.yhm.developer.ecology.common.constant.EcologyConstants;
+import cn.yhm.developer.ecology.common.constant.EcologyExceptionCode;
 import cn.yhm.developer.ecology.exception.EcologyException;
 import cn.yhm.developer.ecology.model.response.ExceptionResponse;
 import lombok.extern.slf4j.Slf4j;

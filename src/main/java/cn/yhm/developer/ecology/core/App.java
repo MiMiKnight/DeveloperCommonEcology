@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.core;
 
-import cn.yhm.developer.ecology.constant.EcologyConstants;
+import cn.yhm.developer.ecology.common.constant.EcologyConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 

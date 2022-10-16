@@ -1,4 +1,4 @@
-package cn.yhm.developer.ecology.constant;
+package cn.yhm.developer.ecology.common.constant;
 
 /**
  * 系统常量

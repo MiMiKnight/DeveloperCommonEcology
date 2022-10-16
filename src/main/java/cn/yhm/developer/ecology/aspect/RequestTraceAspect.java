@@ -1,9 +1,9 @@
 package cn.yhm.developer.ecology.aspect;
 
 
-import cn.yhm.developer.ecology.constant.EcologyAspectOrder;
-import cn.yhm.developer.ecology.constant.EcologyAspectRule;
-import cn.yhm.developer.ecology.constant.EcologyConstants;
+import cn.yhm.developer.ecology.common.constant.EcologyAspectOrder;
+import cn.yhm.developer.ecology.common.constant.EcologyAspectRule;
+import cn.yhm.developer.ecology.common.constant.EcologyConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,6 +17,7 @@ import java.util.UUID;
 
 /**
  * 请求跟踪切面
+ * <p>
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 19:29:31
@@ -59,6 +60,6 @@ public class RequestTraceAspect implements Ordered {
 
     @Override
     public int getOrder() {
-        return EcologyAspectOrder.ORDER_1000;
+        return EcologyAspectOrder.ORDER_100;
     }
 }

@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.annotation.validate;
 
-import cn.yhm.developer.ecology.constant.DateTimeFormatPattern;
+import cn.yhm.developer.ecology.common.constant.DateTimeFormatPattern;
 import cn.yhm.developer.ecology.validator.DateTimeFormatValidator;
 
 import javax.validation.Constraint;
