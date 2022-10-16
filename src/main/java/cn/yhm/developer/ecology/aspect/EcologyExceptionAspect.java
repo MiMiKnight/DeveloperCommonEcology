@@ -30,9 +30,9 @@ import java.util.Objects;
 public class EcologyExceptionAspect {
 
     private interface ExceptionMessage {
-        String MSG_001 = "The resource is not be found";
-        String MSG_002 = "Default Exception";
-        String MSG_003 = "Default Error";
+        String MSG_001 = "Resource Not Be Found";
+        String MSG_002 = "Application Default Exception";
+        String MSG_003 = "Application Default Error";
         String MSG_004 = "SQL Exception";
         String MSG_005 = "Null Pointer Exception";
         String MSG_006 = "SQL Syntax Error EXCEPTION";
