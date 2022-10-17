@@ -25,6 +25,8 @@ public @interface DateTimeFormatValidate {
 
     /**
      * 待校验的日期格式
+     *
+     * @return {@link String 日期格式}
      */
     String format() default DateTimeFormatPattern.STANDARD_4;
 
@@ -34,6 +36,8 @@ public @interface DateTimeFormatValidate {
      * false 严格模式（缺省值）
      * <p>
      * true 宽容模式
+     *
+     * @return boolean 宽容模式
      */
     boolean lenient() default false;
 

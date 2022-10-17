@@ -44,7 +44,7 @@ public class DateUtils {
      * @param date   日期字符串
      * @param format 日期格式
      * @param locale 语言环境
-     * @return {@link OffsetDateTime} OffsetDateTime时间对象
+     * @return {@link OffsetDateTime OffsetDateTime时间对象}
      */
     public static OffsetDateTime convertStr2OffsetDateTime(String date, String format, Locale locale) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, locale);
@@ -58,7 +58,7 @@ public class DateUtils {
      *
      * @param date   日期字符串
      * @param format 日期格式
-     * @return {@link OffsetDateTime} OffsetDateTime时间对象
+     * @return {@link OffsetDateTime OffsetDateTime时间对象}
      */
     public static OffsetDateTime convertStr2OffsetDateTime(String date, String format) {
         return convertStr2OffsetDateTime(date, format, Locale.ENGLISH);
@@ -72,7 +72,7 @@ public class DateUtils {
      * 默认字符串日期格式：yyyy-MM-dd HH:mm:ss.SSS Z
      *
      * @param date 日期字符串
-     * @return {@link OffsetDateTime} OffsetDateTime时间对象
+     * @return {@link OffsetDateTime OffsetDateTime时间对象}
      */
     public static OffsetDateTime convertStr2OffsetDateTime(String date) {
         return convertStr2OffsetDateTime(date, DateTimeFormatPattern.STANDARD_4, Locale.ENGLISH);
@@ -84,7 +84,7 @@ public class DateUtils {
      * @param date   日期字符串
      * @param format 日期格式
      * @param locale 语言环境
-     * @return {@link ZonedDateTime} ZonedDateTime时间对象
+     * @return {@link ZonedDateTime ZonedDateTime时间对象}
      */
     public static ZonedDateTime convertStr2ZonedDateTime(String date, String format, Locale locale) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, locale);
@@ -98,7 +98,7 @@ public class DateUtils {
      *
      * @param date   日期字符串
      * @param format 日期格式
-     * @return {@link ZonedDateTime} ZonedDateTime时间对象
+     * @return {@link ZonedDateTime ZonedDateTime时间对象}
      */
     public static ZonedDateTime convertStr2ZonedDateTime(String date, String format) {
         return convertStr2ZonedDateTime(date, format, Locale.ENGLISH);
@@ -112,7 +112,7 @@ public class DateUtils {
      * 默认字符串日期格式：yyyy-MM-dd HH:mm:ss.SSS Z
      *
      * @param date 日期字符串
-     * @return {@link ZonedDateTime} ZonedDateTime时间对象
+     * @return {@link ZonedDateTime ZonedDateTime时间对象}
      */
     public static ZonedDateTime convertStr2ZonedDateTime(String date) {
         return convertStr2ZonedDateTime(date, DateTimeFormatPattern.STANDARD_4, Locale.ENGLISH);
@@ -126,7 +126,7 @@ public class DateUtils {
      * @param zone   Date对象的时区（此处设置的时区可
      *               能会由于调用parse()解析方法而被覆盖）
      * @param local  语言环境
-     * @return {@link Date} Date时间对象
+     * @return {@link Date Date时间对象}
      * @throws ParseException 日期解析异常
      */
     public static Date convertStr2Date(String date, String format, TimeZone zone, Locale local) throws ParseException {
@@ -146,7 +146,7 @@ public class DateUtils {
      * @param date   日期字符串
      * @param format 日期格式
      * @param zone   Date对象的时区（此处设置的时区可能会由于调用parse()解析方法而被覆盖）
-     * @return {@link Date} Date时间对象
+     * @return {@link Date Date时间对象}
      * @throws ParseException 日期解析异常
      */
     public static Date convertStr2Date(String date, String format, TimeZone zone) throws ParseException {
@@ -161,7 +161,7 @@ public class DateUtils {
      * @param date    日期字符串
      * @param format  日期格式
      * @param zoneGMT Date对象的时区（此处设置的时区可能会由于调用parse()解析方法而被覆盖）
-     * @return {@link Date} Date时间对象
+     * @return {@link Date Date时间对象}
      * @throws ParseException 日期解析异常
      */
     public static Date convertStr2Date(String date, String format, String zoneGMT) throws ParseException {
@@ -178,7 +178,7 @@ public class DateUtils {
      * 默认字符串日期格式：yyyy-MM-dd HH:mm:ss
      *
      * @param date 日期字符串
-     * @return {@link Date} Date时间对象
+     * @return {@link Date Date时间对象}
      * @throws ParseException 日期解析异常
      */
     public static Date convertStr2DateUTC(String date) throws ParseException {

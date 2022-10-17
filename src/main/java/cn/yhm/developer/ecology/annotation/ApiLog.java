@@ -22,12 +22,16 @@ public @interface ApiLog {
 
     /**
      * 匿名化字段
+     *
+     * @return {@link String[] 匿名化字段数组}
      */
     String[] anonymous() default "";
 
     /**
      * 接口类型
      * 增（save）、删(delete)、改（update）、查（query）
+     *
+     * @return {@link ApiType 接口类型枚举}
      */
     ApiType type() default ApiType.Unknown;
 

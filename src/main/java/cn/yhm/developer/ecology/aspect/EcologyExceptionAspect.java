@@ -46,7 +46,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 400
      *
      * @param e MethodArgumentNotValidException 注解校验请求入参异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -69,7 +69,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 404
      *
      * @param e NoHandlerFoundException URI资源未找到异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = NoHandlerFoundException.class)
@@ -85,7 +85,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 405
      *
      * @param e NoHandlerFoundException 请求方法不支持异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
@@ -101,7 +101,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 500
      *
      * @param e Exception异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = Exception.class)
@@ -118,7 +118,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 500
      *
      * @param e Exception异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = RuntimeException.class)
@@ -135,7 +135,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 500
      *
      * @param e NullPointerException空指针异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = NullPointerException.class)
@@ -152,7 +152,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 500
      *
      * @param e EcologyException 自定义异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = EcologyException.class)
@@ -168,7 +168,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 501
      *
      * @param e Error 错误
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
 
     @ResponseStatus(value = HttpStatus.NOT_IMPLEMENTED)
@@ -186,7 +186,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 502
      *
      * @param e SQLException SQL异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.BAD_GATEWAY)
     @ExceptionHandler(value = SQLException.class)
@@ -203,7 +203,7 @@ public class EcologyExceptionAspect {
      * HTTP Code 502
      *
      * @param e SQLSyntaxErrorException SQL语法异常
-     * @return {@link ExceptionResponse}
+     * @return {@link ExceptionResponse 异常响应}
      */
     @ResponseStatus(value = HttpStatus.BAD_GATEWAY)
     @ExceptionHandler(value = SQLSyntaxErrorException.class)

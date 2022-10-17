@@ -37,7 +37,7 @@ public abstract class PagingResponse<T> implements GatewayResponse {
     private Long pageSize;
 
     /**
-     * 结果姐
+     * 结果集
      */
     @JsonProperty(value = "results", index = 4, access = JsonProperty.Access.READ_ONLY)
     private List<T> results;
