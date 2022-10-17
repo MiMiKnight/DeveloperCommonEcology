@@ -1,5 +1,9 @@
 package cn.yhm.developer.ecology.model.request;
 
+import cn.yhm.developer.ecology.model.response.PagingResponse;
+
+import java.util.List;
+
 /**
  * 分页请求参数接口
  * <p>
@@ -104,5 +108,24 @@ public interface PaginationRequest extends GatewayRequest {
             return pages;
         }
         return pageIndex;
+    }
+
+    /**
+     * 处理响应
+     *
+     * @param response 响应
+     * @param total    总记录数
+     * @param results  分页查询结果集
+     * @return {@link R 被处理后的响应}
+     */
+    default <E, R extends PagingResponse<E>> R handleResponse(R response, Long total, List<E> results) {
+        if (null == response || null == total || total < 0L) {
+            throw new IllegalArgumentException();
+        }
+        response.setTotal(total)
+                .setPageIndex(actualPageIndex(total))
+                .setPageSize(getPageSize())
+                .setResults(results);
+        return response;
     }
 }
