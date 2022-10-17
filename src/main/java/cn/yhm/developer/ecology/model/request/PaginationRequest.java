@@ -47,7 +47,7 @@ public interface PaginationRequest extends GatewayRequest {
         if (pageSize == null || pageSize < 1L) {
             throw new IllegalArgumentException();
         }
-        return (actualPageIndex(pages(total)) - 1) * pageSize;
+        return (actualPageIndex(total) - 1) * pageSize;
     }
 
     /**
@@ -87,7 +87,7 @@ public interface PaginationRequest extends GatewayRequest {
     /**
      * 计算实际页码
      *
-     * @param pageIndex 当前页码
+     * @param pageIndex 当前用户传入的页码
      * @param pages     总页数
      * @return {@link Long} 实际页码
      */
