@@ -12,27 +12,12 @@ package cn.yhm.developer.ecology.model.request;
  */
 public interface PaginationRequest extends GatewayRequest {
 
-
-    /**
-     * 设置当前页码
-     *
-     * @param pageIndex 当前页码
-     */
-    void setPageIndex(Long pageIndex);
-
     /**
      * 获取当前页码
      *
      * @return 当前页码
      */
     Long getPageIndex();
-
-    /**
-     * 设置每页记录数
-     *
-     * @param pageSize 每页记录数
-     */
-    void setPageSize(Long pageSize);
 
     /**
      * 获取每页记录数
