@@ -2,9 +2,9 @@ package cn.yhm.developer.ecology.model.response;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * 程序发生异常时的响应参数类
@@ -12,7 +12,7 @@ import lombok.Setter;
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 09:40:47
  */
-@Builder
+@Accessors(chain = true)
 @Getter
 @Setter
 public class ExceptionResponse implements GatewayResponse {

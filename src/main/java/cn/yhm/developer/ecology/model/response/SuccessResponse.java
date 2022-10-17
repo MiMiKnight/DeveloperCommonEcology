@@ -4,6 +4,7 @@ import cn.yhm.developer.ecology.common.constant.EcologyExceptionCode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * 成功响应参数类
@@ -13,6 +14,7 @@ import lombok.Setter;
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 22:33:44
  */
+@Accessors(chain = true)
 @Getter
 @Setter
 public class SuccessResponse implements GatewayResponse {
