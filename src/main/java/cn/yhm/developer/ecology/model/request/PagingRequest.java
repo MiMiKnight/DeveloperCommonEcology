@@ -21,7 +21,7 @@ public abstract class PagingRequest implements PaginationRequest {
     /**
      * 当前页码
      */
-    @NotNull
+    @NotNull(message = "The parameter can not be null")
     @Min(value = 1L, message = "The minimum value of the parameter is 1")
     @Max(value = Integer.MAX_VALUE, message = "The maximum value of the parameter is Integer.MAX_VALUE")
     @JsonProperty(value = "page_index", access = JsonProperty.Access.WRITE_ONLY)
@@ -30,7 +30,7 @@ public abstract class PagingRequest implements PaginationRequest {
     /**
      * 每页记录数
      */
-    @NotNull
+    @NotNull(message = "The parameter can not be null")
     @Min(value = 1L, message = "The minimum value of the parameter is 1")
     @Max(value = 100, message = "The maximum value of the parameter is 100")
     @JsonProperty(value = "page_size", access = JsonProperty.Access.WRITE_ONLY)

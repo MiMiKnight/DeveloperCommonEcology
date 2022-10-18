@@ -19,14 +19,14 @@ public interface PaginationRequest extends GatewayRequest {
     /**
      * 获取当前页码
      *
-     * @return {@link Long 当前页码}
+     * @return {@link Long} 当前页码
      */
     Long getPageIndex();
 
     /**
      * 获取每页记录数
      *
-     * @return {@link Long 每页记录数}
+     * @return {@link Long} 每页记录数
      */
     Long getPageSize();
 
@@ -34,7 +34,7 @@ public interface PaginationRequest extends GatewayRequest {
      * 计算分页偏移量
      *
      * @param total 总记录数
-     * @return {@link Long 分页偏移量}
+     * @return {@link Long} 分页偏移量
      */
     default Long offset(Long total) {
         return offset(total, getPageSize());
@@ -45,20 +45,20 @@ public interface PaginationRequest extends GatewayRequest {
      *
      * @param total    总记录数
      * @param pageSize 每页记录数
-     * @return {@link Long 分页偏移量}
+     * @return {@link Long} 分页偏移量
      */
     default Long offset(Long total, Long pageSize) {
         if (pageSize == null || pageSize < 1L) {
             throw new IllegalArgumentException();
         }
-        return (actualPageIndex(total) - 1) * pageSize;
+        return (actualPageIndex(total) - 1L) * pageSize;
     }
 
     /**
      * 计算总页数
      *
      * @param total 总记录数
-     * @return {@link Long 当前分页条件下的总页数}
+     * @return {@link Long} 当前分页条件下的总页数
      */
     default Long pages(Long total) {
         return pages(total, getPageSize());
@@ -69,7 +69,7 @@ public interface PaginationRequest extends GatewayRequest {
      *
      * @param total    总记录数
      * @param pageSize 每页记录数
-     * @return {@link Long 当前分页条件下的总页数}
+     * @return {@link Long} 当前分页条件下的总页数
      */
     default Long pages(Long total, Long pageSize) {
         if (null == total || total < 0L || pageSize == null || pageSize < 1L) {
@@ -82,7 +82,7 @@ public interface PaginationRequest extends GatewayRequest {
      * 计算实际页码
      *
      * @param total 总记录数
-     * @return {@link Long 实际页码}
+     * @return {@link Long} 实际页码
      */
     default Long actualPageIndex(Long total) {
         return actualPageIndex(getPageIndex(), pages(total));
@@ -93,7 +93,7 @@ public interface PaginationRequest extends GatewayRequest {
      *
      * @param pageIndex 当前用户传入的页码
      * @param pages     总页数
-     * @return {@link Long 实际页码}
+     * @return {@link Long} 实际页码
      */
     default Long actualPageIndex(Long pageIndex, Long pages) {
         if (pageIndex == null || pageIndex < 1L || pages == null || pages < 0L) {
@@ -113,19 +113,37 @@ public interface PaginationRequest extends GatewayRequest {
     /**
      * 处理响应
      *
-     * @param response 响应
+     * @param response 响应对象
      * @param total    总记录数
      * @param results  分页查询结果集
-     * @return {@link R 被处理后的响应}
+     * @return {@link R} 被处理后的响应
      */
     default <E, R extends PagingResponse<E>> R handleResponse(R response, Long total, List<E> results) {
-        if (null == response || null == total || total < 0L) {
+        return handleResponse(response, total, actualPageIndex(total), getPageSize(), results);
+    }
+
+    /**
+     * 处理响应
+     *
+     * @param response        响应对象
+     * @param total           总记录数
+     * @param actualPageIndex 实际页码
+     * @param pageSize        每页记录数
+     * @param results         分页查询结果集
+     * @return {@link R} 被处理后的响应
+     */
+    default <E, R extends PagingResponse<E>> R handleResponse(R response, Long total, Long actualPageIndex,
+                                                              Long pageSize, List<E> results) {
+        if (null == response || null == total || total < 0L
+                || null == actualPageIndex || actualPageIndex < 1L
+                || null == pageSize || pageSize < 1L) {
             throw new IllegalArgumentException();
         }
         response.setTotal(total)
-                .setPageIndex(actualPageIndex(total))
-                .setPageSize(getPageSize())
+                .setPageIndex(actualPageIndex)
+                .setPageSize(pageSize)
                 .setResults(results);
         return response;
     }
+
 }

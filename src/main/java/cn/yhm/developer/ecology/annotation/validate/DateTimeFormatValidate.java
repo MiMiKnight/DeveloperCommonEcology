@@ -26,7 +26,7 @@ public @interface DateTimeFormatValidate {
     /**
      * 待校验的日期格式
      *
-     * @return {@link String 日期格式}
+     * @return {@link String} 日期格式
      */
     String format() default DateTimeFormatPattern.STANDARD_4;
 
