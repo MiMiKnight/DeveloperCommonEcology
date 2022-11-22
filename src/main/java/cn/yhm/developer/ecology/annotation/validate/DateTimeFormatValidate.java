@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 日期时间格式
+ * 日期时间格式校验注解
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 01:35:09
@@ -41,6 +41,11 @@ public @interface DateTimeFormatValidate {
      */
     boolean lenient() default false;
 
+    /**
+     * 提示信息
+     *
+     * @return {@link String}
+     */
     String message() default "The parameter value is invalid";
 
     Class<?>[] groups() default {};

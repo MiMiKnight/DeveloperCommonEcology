@@ -1,8 +1,8 @@
 package cn.yhm.developer.ecology.rest.controller;
 
-import cn.yhm.developer.ecology.model.request.GatewayRequest;
-import cn.yhm.developer.ecology.model.response.GatewayResponse;
-import cn.yhm.developer.ecology.rest.handler.GatewayHandler;
+import cn.yhm.developer.ecology.model.request.EcologyRequest;
+import cn.yhm.developer.ecology.model.response.EcologyResponse;
+import cn.yhm.developer.ecology.rest.handler.EcologyHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
@@ -10,13 +10,13 @@ import org.springframework.context.ApplicationContext;
 import javax.annotation.Resource;
 
 /**
- * 网关控制器
+ * 适配handler方法的前端控制器抽象类
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 01:15:27
  */
 @Slf4j
-public abstract class GatewayController {
+public abstract class EcologyController {
 
     private interface ExceptionMessage {
         String MSG_001 = "The handlerClass can not be null.";
@@ -29,12 +29,12 @@ public abstract class GatewayController {
     /**
      * 处理方法
      *
-     * @param request      请求
+     * @param request      请求参数
      * @param handlerClass 处理程序类
-     * @return response 响应
+     * @return response 响应参数
      * @throws Exception 异常
      */
-    public <T extends GatewayResponse, R extends GatewayRequest, H extends GatewayHandler<R, T>> T handle(R request,
+    public <T extends EcologyResponse, R extends EcologyRequest, H extends EcologyHandler<R, T>> T handle(R request,
                                                                                                           Class<H> handlerClass) throws Exception {
         if (handlerClass == null) {
             throw new IllegalArgumentException(ExceptionMessage.MSG_001);

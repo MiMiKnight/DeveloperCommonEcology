@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 
 /**
- * 枚举校验器
+ * Double类型枚举校验器
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 07:11:15
@@ -15,9 +15,10 @@ import java.util.Arrays;
 public class EnumerateDoubleValidator implements ConstraintValidator<EnumerateDoubleValidate, Double> {
 
     /**
-     * double类型枚举值
+     * 枚举数组
      */
     private double[] enumerations;
+
     /**
      * 精确度
      */
@@ -32,12 +33,15 @@ public class EnumerateDoubleValidator implements ConstraintValidator<EnumerateDo
 
     /**
      * @param value   被校验的参数值
-     * @param context context in which the constraint is evaluated
-     * @return 布尔
+     * @param context 计算约束的上下文
+     * @return true：校验通过；false：校验未通过
      */
     @Override
     public boolean isValid(Double value, ConstraintValidatorContext context) {
-        if (value == null || enumerations == null || enumerations.length == 0) {
+        if (null == value) {
+            return true;
+        }
+        if (null == enumerations || enumerations.length == 0) {
             return false;
         }
         return Arrays.stream(enumerations).anyMatch(enumeration -> Math.abs(enumeration - value) <= delta);

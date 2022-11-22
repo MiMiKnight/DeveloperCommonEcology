@@ -54,9 +54,18 @@ public interface CommonEntity {
 
     /**
      * 乐观锁值自增
+     *
+     * @param step 步长
+     */
+    default void selfIncreaseVersion(Integer step) {
+        this.setVersion(getVersion() + step);
+    }
+
+    /**
+     * 乐观锁值自增
      */
     default void selfIncreaseVersion() {
-        this.setVersion(getVersion() + 1);
+        this.selfIncreaseVersion(1);
     }
 
     /**

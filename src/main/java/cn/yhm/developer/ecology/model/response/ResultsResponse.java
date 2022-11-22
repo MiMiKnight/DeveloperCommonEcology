@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Setter
 @Getter
-public abstract class ResultsResponse<T> implements GatewayResponse {
+public abstract class ResultsResponse<T> implements EcologyResponse {
 
     /**
      * 结果集

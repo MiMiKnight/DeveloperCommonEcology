@@ -11,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 枚举校验注解
+ * String类型枚举校验注解
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 07:00:05
@@ -22,8 +22,18 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = {EnumerateStringValidator.class})
 public @interface EnumerateStringValidate {
 
+    /**
+     * 枚举数组
+     *
+     * @return {@link String[]}
+     */
     String[] value() default {};
 
+    /**
+     * 提示信息
+     *
+     * @return {@link String}
+     */
     String message() default "The parameter value is invalid";
 
     Class<?>[] groups() default {};

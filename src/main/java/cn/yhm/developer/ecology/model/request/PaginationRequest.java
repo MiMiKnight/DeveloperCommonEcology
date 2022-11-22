@@ -4,6 +4,7 @@ import cn.yhm.developer.ecology.model.response.PagingResponse;
 
 import java.util.List;
 
+
 /**
  * 分页请求参数接口
  * <p>
@@ -14,7 +15,7 @@ import java.util.List;
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 09:34:35
  */
-public interface PaginationRequest extends GatewayRequest {
+public interface PaginationRequest extends EcologyRequest {
 
     /**
      * 获取当前页码
@@ -134,15 +135,16 @@ public interface PaginationRequest extends GatewayRequest {
      */
     default <E, R extends PagingResponse<E>> R handleResponse(R response, Long total, Long actualPageIndex,
                                                               Long pageSize, List<E> results) {
-        if (null == response || null == total || total < 0L
-                || null == actualPageIndex || actualPageIndex < 1L
-                || null == pageSize || pageSize < 1L) {
+        if (null == response || null == total
+                || total < 0L
+                || null == actualPageIndex
+                || actualPageIndex < 1L
+                || null == pageSize
+                || pageSize < 1L) {
             throw new IllegalArgumentException();
         }
-        response.setTotal(total)
-                .setPageIndex(actualPageIndex)
-                .setPageSize(pageSize)
-                .setResults(results);
+
+        response.setTotal(total).setPageIndex(actualPageIndex).setPageSize(pageSize).setResults(results);
         return response;
     }
 

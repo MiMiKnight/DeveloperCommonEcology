@@ -16,7 +16,7 @@ import java.util.List;
 @Accessors(chain = true)
 @Setter
 @Getter
-public abstract class PagingResponse<T> implements GatewayResponse {
+public abstract class PagingResponse<T> implements EcologyResponse {
 
     /**
      * 总记录数

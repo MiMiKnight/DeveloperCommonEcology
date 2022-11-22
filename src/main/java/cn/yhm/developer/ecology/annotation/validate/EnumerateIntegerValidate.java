@@ -1,7 +1,6 @@
 package cn.yhm.developer.ecology.annotation.validate;
 
 import cn.yhm.developer.ecology.validator.EnumerateIntegerValidator;
-import cn.yhm.developer.ecology.validator.EnumerateStringValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -12,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 枚举校验注解
+ * int类型枚举校验注解
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 07:00:05
@@ -23,6 +22,11 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = {EnumerateIntegerValidator.class})
 public @interface EnumerateIntegerValidate {
 
+    /**
+     * 枚举数组
+     *
+     * @return {@link int[]}
+     */
     int[] value() default {};
 
     String message() default "The parameter value is invalid";

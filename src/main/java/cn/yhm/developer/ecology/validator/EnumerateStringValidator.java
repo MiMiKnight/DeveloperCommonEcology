@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 
 /**
- * 枚举校验器
+ * String类型枚举校验器
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 07:11:15
@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class EnumerateStringValidator implements ConstraintValidator<EnumerateStringValidate, String> {
 
     /**
-     * 枚举值
+     * 枚举数组
      */
     private String[] enumerations;
 
@@ -27,12 +27,15 @@ public class EnumerateStringValidator implements ConstraintValidator<EnumerateSt
 
     /**
      * @param value   被校验的参数值
-     * @param context context in which the constraint is evaluated
-     * @return 布尔
+     * @param context 计算约束的上下文
+     * @return true：校验通过；false：校验未通过
      */
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null || enumerations == null || enumerations.length == 0) {
+        if (null == value) {
+            return true;
+        }
+        if (null == enumerations || enumerations.length == 0) {
             return false;
         }
         return Arrays.asList(enumerations).contains(value);

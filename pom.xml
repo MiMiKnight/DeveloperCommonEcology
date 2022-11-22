@@ -14,7 +14,7 @@
 
     <!--本工程-->
     <artifactId>developer-common-ecology</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>${project.name}</name>
     <description>开发者公共生态项目</description>

@@ -12,7 +12,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public abstract class ResultResponse<T> implements GatewayResponse {
+public abstract class ResultResponse<T> implements EcologyResponse {
 
     /**
      * 结果

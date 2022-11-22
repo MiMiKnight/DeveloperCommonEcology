@@ -15,7 +15,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class SuccessResponse implements GatewayResponse {
+public class SuccessResponse implements EcologyResponse {
 
     /**
      * 成功响应码

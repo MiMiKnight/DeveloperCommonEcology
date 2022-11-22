@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Getter
 @Setter
-public class ExceptionResponse implements GatewayResponse {
+public class ExceptionResponse implements EcologyResponse {
 
     /**
      * 错误码

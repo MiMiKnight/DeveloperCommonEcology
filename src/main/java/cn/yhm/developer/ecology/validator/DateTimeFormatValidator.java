@@ -35,6 +35,11 @@ public class DateTimeFormatValidator implements ConstraintValidator<DateTimeForm
         this.lenient = validate.lenient();
     }
 
+    /**
+     * @param value   被校验的参数值
+     * @param context 计算约束的上下文
+     * @return true：校验通过；false：校验未通过
+     */
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         // 如果参数被校验参数为null且format为null或者为空则校验不通过

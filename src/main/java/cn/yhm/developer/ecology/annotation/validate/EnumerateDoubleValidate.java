@@ -11,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 枚举校验注解
+ * double类型枚举校验注解
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-05 07:00:05
@@ -24,6 +24,8 @@ public @interface EnumerateDoubleValidate {
 
     /**
      * 枚举数组
+     *
+     * @return {@link double[]}
      */
     double[] value() default {};
 
@@ -34,6 +36,11 @@ public @interface EnumerateDoubleValidate {
      */
     double delta() default 10e-3D;
 
+    /**
+     * 提示消息
+     *
+     * @return {@link String}
+     */
     String message() default "The parameter value is invalid";
 
     Class<?>[] groups() default {};
