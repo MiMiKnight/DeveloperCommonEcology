@@ -31,20 +31,9 @@ public @interface DateTimeFormatValidate {
     String format() default DateTimeFormatPattern.STANDARD_4;
 
     /**
-     * 日期转换时是否启用宽容模式
-     * <p>
-     * false 严格模式（缺省值）
-     * <p>
-     * true 宽容模式
-     *
-     * @return boolean 宽容模式
-     */
-    boolean lenient() default false;
-
-    /**
      * 提示信息
      *
-     * @return {@link String}
+     * @return {@link String} 报错提示信息
      */
     String message() default "The parameter value is invalid";
 

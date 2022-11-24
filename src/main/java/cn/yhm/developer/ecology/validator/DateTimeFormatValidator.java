@@ -22,19 +22,9 @@ public class DateTimeFormatValidator implements ConstraintValidator<DateTimeForm
      */
     private String format;
 
-    /**
-     * 日期转换时是否启用宽容模式
-     * <p>
-     * false 严格模式（缺省值）
-     * <p>
-     * true 宽容模式
-     */
-    private boolean lenient;
-
     @Override
     public void initialize(DateTimeFormatValidate validate) {
         this.format = validate.format();
-        this.lenient = validate.lenient();
     }
 
     /**
