@@ -2,3 +2,9 @@
 .idea/
 target/
 *.iml
+
+### Git
+*.orig
+
+### Project
+*.class
