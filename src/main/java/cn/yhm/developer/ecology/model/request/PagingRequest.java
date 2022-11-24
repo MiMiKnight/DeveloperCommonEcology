@@ -1,8 +1,6 @@
 package cn.yhm.developer.ecology.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -14,8 +12,6 @@ import javax.validation.constraints.NotNull;
  * @author victor2015yhm@gmail.com
  * @since 2022-10-17 21:51:34
  */
-@Setter
-@Getter
 public abstract class PagingRequest implements PaginationRequest {
 
     /**
@@ -36,4 +32,22 @@ public abstract class PagingRequest implements PaginationRequest {
     @JsonProperty(value = "page_size", access = JsonProperty.Access.WRITE_ONLY)
     private Long pageSize = 5L;
 
+    @Override
+    public Long getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(Long pageIndex) {
+        this.pageIndex = pageIndex;
+    }
+
+    @Override
+    public Long getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Long pageSize) {
+        this.pageSize = pageSize;
+    }
+    
 }
