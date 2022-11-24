@@ -4,7 +4,8 @@ import cn.yhm.developer.ecology.annotation.validate.DateTimeFormatValidate;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 /**
@@ -48,10 +49,8 @@ public class DateTimeFormatValidator implements ConstraintValidator<DateTimeForm
         }
         // 如果转换日期转换成功则校验通过，否则报异常则校验不通过
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
-            // 设置日期转换时是否宽松模式
-            dateFormat.setLenient(lenient);
-            dateFormat.parse(value);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, Locale.ENGLISH);
+            ZonedDateTime.parse(value, formatter);
             return true;
         } catch (Exception e) {
             return false;
