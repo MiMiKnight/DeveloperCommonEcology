@@ -1,6 +1,7 @@
 package cn.yhm.developer.ecology.validator;
 
 import cn.yhm.developer.ecology.annotation.validate.DateTimeFormatValidate;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -43,8 +44,11 @@ public class DateTimeFormatValidator implements ConstraintValidator<DateTimeForm
      */
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        // 如果参数被校验参数为null且format为null或者为空则校验不通过
-        if (value == null || format == null || "".equals(format.trim())) {
+        if (null == value) {
+            return true;
+        }
+        // format为空则校验不通过
+        if (StringUtils.isBlank(format)) {
             return false;
         }
         // 如果转换日期转换成功则校验通过，否则报异常则校验不通过
