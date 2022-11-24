@@ -1,5 +1,9 @@
 package cn.yhm.developer.ecology.model.entity;
 
+import cn.yhm.developer.ecology.common.constant.TimeZoneGMT;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -29,7 +33,7 @@ public interface CommonEntity {
      *
      * @param createTime 创建时间
      */
-    void setCreateTime(Date createTime);
+    void setCreateTime(LocalDateTime createTime);
 
     /**
      * 获取创建时间
@@ -43,7 +47,7 @@ public interface CommonEntity {
      *
      * @param updateTime 更新时间
      */
-    void setUpdateTime(Date updateTime);
+    void setUpdateTime(LocalDateTime updateTime);
 
     /**
      * 获取更新时间
@@ -72,17 +76,19 @@ public interface CommonEntity {
      * 为创建时间和更新时间赋统一初始值
      */
     default void assignDateTime() {
-        this.assignDateTime(new Date());
+        ZoneId zoneId = ZoneId.of(TimeZoneGMT.GMT_0);
+        LocalDateTime dateTime = LocalDateTime.now(zoneId);
+        this.assignDateTime(dateTime);
     }
 
     /**
      * 为创建时间和更新时间赋统一初始值
      *
-     * @param date 日期时间
+     * @param dateTime 日期时间
      */
-    default void assignDateTime(Date date) {
-        this.setCreateTime(date);
-        this.setUpdateTime(date);
+    default void assignDateTime(LocalDateTime dateTime) {
+        this.setCreateTime(dateTime);
+        this.setUpdateTime(dateTime);
     }
 
 }

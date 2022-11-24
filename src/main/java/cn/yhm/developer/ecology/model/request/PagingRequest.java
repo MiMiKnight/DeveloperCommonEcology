@@ -19,7 +19,7 @@ public abstract class PagingRequest implements PaginationRequest {
      */
     @NotNull(message = "The parameter can not be null")
     @Min(value = 1L, message = "The minimum value of the parameter is 1")
-    @Max(value = Integer.MAX_VALUE, message = "The maximum value of the parameter is Integer.MAX_VALUE")
+    @Max(value = Integer.MAX_VALUE, message = "The maximum value of parameter is Integer.MAX_VALUE")
     @JsonProperty(value = "page_index", access = JsonProperty.Access.WRITE_ONLY)
     private Long pageIndex = 1L;
 
@@ -28,7 +28,7 @@ public abstract class PagingRequest implements PaginationRequest {
      */
     @NotNull(message = "The parameter can not be null")
     @Min(value = 1L, message = "The minimum value of the parameter is 1")
-    @Max(value = 100, message = "The maximum value of the parameter is 100")
+    @Max(value = 100, message = "The maximum value of parameter is 100")
     @JsonProperty(value = "page_size", access = JsonProperty.Access.WRITE_ONLY)
     private Long pageSize = 5L;
 
@@ -49,5 +49,5 @@ public abstract class PagingRequest implements PaginationRequest {
     public void setPageSize(Long pageSize) {
         this.pageSize = pageSize;
     }
-    
+
 }
