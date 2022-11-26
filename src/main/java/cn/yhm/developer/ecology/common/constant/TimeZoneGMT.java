@@ -1,10 +1,16 @@
 package cn.yhm.developer.ecology.common.constant;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.time.ZoneId;
+
 /**
- * 格林尼治时间时区
+ * 时区常量
  * <p>
- * P：Positive 正
- * N：Negative 负
+ * 时区标准：ISO 8601 Time zone
+ * <p>
+ * P：Positive 正 东时区
+ * N：Negative 负 西时区
  *
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 14:18:06
@@ -14,7 +20,7 @@ public interface TimeZoneGMT {
     /**
      * 东十一区
      */
-    String GMT_P_11 = "GMT+11:00";
+    String GMT_P_11 = "+11:00";
 
     /**
      * 东十区
@@ -69,7 +75,7 @@ public interface TimeZoneGMT {
     /**
      * 零时区
      */
-    String GMT_0 = "GMT+00:00";
+    String GMT = "GMT";
 
     /**
      * 西一区
@@ -133,7 +139,7 @@ public interface TimeZoneGMT {
     interface China {
 
         /**
-         * 北京时区
+         * 北京时间
          */
         String BEIJING = GMT_P_8;
     }
@@ -146,7 +152,7 @@ public interface TimeZoneGMT {
         /**
          * 格林尼治时区
          */
-        String GREENWICH = GMT_0;
+        String GREENWICH = GMT;
     }
 
     /**
@@ -196,6 +202,19 @@ public interface TimeZoneGMT {
          */
         String HST = GMT_N_10;
 
+    }
+
+    /**
+     * 获取ZoneId
+     *
+     * @param timezone 时区
+     * @return {@link ZoneId}
+     */
+    default ZoneId getZoneId(String timezone) {
+        if (StringUtils.isBlank(timezone)) {
+            return ZoneId.of(GMT);
+        }
+        return ZoneId.of(timezone);
     }
 
 }

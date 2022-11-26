@@ -39,24 +39,27 @@ public interface DateTimeFormatPattern {
      * 2022-09-04 10:06:39.123 GMT-06:00 【表示 西六区 2022年9月4日10点6分39秒123毫秒】
      */
     String STANDARD_4 = "yyyy-MM-dd HH:mm:ss.SSS z";
+    
+
+    String STANDARD_5 = "yyyy-MM-dd HH:mm:ss.SSS Z";
 
     /**
      * 年-月-日
      */
-    String STANDARD_5 = "yyyy-MM-dd";
+    String STANDARD_6 = "yyyy-MM-dd";
 
     /**
      * 年/月/日
      */
-    String STANDARD_6 = "yyyy/MM/dd";
+    String STANDARD_7 = "yyyy/MM/dd";
 
     /**
      * 24小时制 "时:分:秒"
      */
-    String STANDARD_7 = "HH:mm:ss";
+    String STANDARD_8 = "HH:mm:ss";
 
     /**
      * 24小时制 "时:分:秒.毫秒"
      */
-    String STANDARD_8 = "HH:mm:ss.SSS";
+    String STANDARD_9 = "HH:mm:ss.SSS";
 }

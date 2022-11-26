@@ -135,7 +135,7 @@ public class DateUtils {
         dateFormat.setLenient(false);
         // 设置Date对象的时区 (由此方法设置的TimeZone可能会由于调用parse()解析方法而被覆盖。)
         dateFormat.setTimeZone(zone);
-        return dateFormat.parse(date)      ;
+        return dateFormat.parse(date);
     }
 
     /**
@@ -182,7 +182,8 @@ public class DateUtils {
      * @throws ParseException 日期解析异常
      */
     public static Date convertStr2DateUTC(String date) throws ParseException {
-        return convertStr2Date(date, DateTimeFormatPattern.STANDARD_1, TimeZone.getTimeZone(TimeZoneGMT.GMT_0), Locale.ENGLISH);
+        return convertStr2Date(date, DateTimeFormatPattern.STANDARD_1, TimeZone.getTimeZone(TimeZoneGMT.UK.GREENWICH),
+                Locale.ENGLISH);
     }
 
 }
