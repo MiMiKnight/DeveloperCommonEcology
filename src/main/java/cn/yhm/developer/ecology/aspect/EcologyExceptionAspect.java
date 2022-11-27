@@ -1,7 +1,8 @@
 package cn.yhm.developer.ecology.aspect;
 
 import cn.yhm.developer.ecology.common.constant.EcologyConstants;
-import cn.yhm.developer.ecology.common.constant.EcologyExceptionCode;
+import cn.yhm.developer.ecology.common.constant.EcologyResponseCode;
+import cn.yhm.developer.ecology.common.constant.EcologyResponseMessage;
 import cn.yhm.developer.ecology.exception.EcologyException;
 import cn.yhm.developer.ecology.model.response.ExceptionResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.util.Objects;
@@ -29,7 +31,7 @@ import java.util.Objects;
 @RestControllerAdvice
 public class EcologyExceptionAspect {
 
-    private interface ExceptionMessage {
+    private interface ResponseMessage extends EcologyResponseMessage {
         String MSG_001 = "Resource Not Be Found";
         String MSG_002 = "Application Default Exception";
         String MSG_003 = "Application Default Error";
@@ -59,7 +61,8 @@ public class EcologyExceptionAspect {
         message = String.format(EcologyConstants.Error.ARGUMENT_VALIDATE_ERROR_MSG_FORMAT, field, message);
 
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.API.ARGUMENT_INVALID).setErrorMsg(message);
+        response.setErrorCode(EcologyResponseCode.API.ARGUMENT_INVALID);
+        response.setErrorMsg(message);
         return response;
     }
 
@@ -75,7 +78,8 @@ public class EcologyExceptionAspect {
     @ExceptionHandler(value = NoHandlerFoundException.class)
     public ExceptionResponse handle(NoHandlerFoundException e) {
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.System.RESOURCE_NOT_BE_FOUND).setErrorMsg(ExceptionMessage.MSG_001);
+        response.setErrorCode(EcologyResponseCode.System.RESOURCE_NOT_BE_FOUND);
+        response.setErrorMsg(ResponseMessage.MSG_001);
         return response;
     }
 
@@ -91,7 +95,8 @@ public class EcologyExceptionAspect {
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public ExceptionResponse handle(HttpRequestMethodNotSupportedException e) {
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.System.REQUEST_METHOD_NOT_SUPPORTED_EXCEPTION).setErrorMsg(ExceptionMessage.MSG_007);
+        response.setErrorCode(EcologyResponseCode.System.REQUEST_METHOD_NOT_SUPPORTED_EXCEPTION);
+        response.setErrorMsg(ResponseMessage.MSG_007);
         return response;
     }
 
@@ -108,7 +113,8 @@ public class EcologyExceptionAspect {
     public ExceptionResponse handle(Exception e) {
         log.error(e.getMessage());
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.System.DEFAULT_EXCEPTION).setErrorMsg(ExceptionMessage.MSG_002);
+        response.setErrorCode(EcologyResponseCode.System.DEFAULT_EXCEPTION);
+        response.setErrorMsg(ResponseMessage.MSG_002);
         return response;
     }
 
@@ -125,7 +131,8 @@ public class EcologyExceptionAspect {
     public ExceptionResponse handle(RuntimeException e) {
         log.error(e.getMessage());
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.System.RUNTIME_EXCEPTION).setErrorMsg(ExceptionMessage.MSG_008);
+        response.setErrorCode(EcologyResponseCode.System.RUNTIME_EXCEPTION);
+        response.setErrorMsg(ResponseMessage.MSG_008);
         return response;
     }
 
@@ -142,23 +149,8 @@ public class EcologyExceptionAspect {
     public ExceptionResponse handle(NullPointerException e) {
         log.error(e.getMessage());
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.System.NULL_POINTER_EXCEPTION).setErrorMsg(ExceptionMessage.MSG_005);
-        return response;
-    }
-
-    /**
-     * 自定义异常处理
-     * <p>
-     * HTTP Code 500
-     *
-     * @param e EcologyException 自定义异常
-     * @return {@link ExceptionResponse} 异常响应
-     */
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(value = EcologyException.class)
-    public ExceptionResponse handle(EcologyException e) {
-        ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(e.getErrorCode()).setErrorMsg(e.getErrorMsg());
+        response.setErrorCode(EcologyResponseCode.System.NULL_POINTER_EXCEPTION);
+        response.setErrorMsg(ResponseMessage.MSG_005);
         return response;
     }
 
@@ -176,7 +168,8 @@ public class EcologyExceptionAspect {
     public ExceptionResponse handle(Error e) {
         log.error(e.getMessage());
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.System.ERROR).setErrorMsg(ExceptionMessage.MSG_003);
+        response.setErrorCode(EcologyResponseCode.System.ERROR);
+        response.setErrorMsg(ResponseMessage.MSG_003);
         return response;
     }
 
@@ -193,7 +186,8 @@ public class EcologyExceptionAspect {
     public ExceptionResponse handle(SQLException e) {
         log.error(e.getMessage());
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.Database.SQL_EXCEPTION).setErrorMsg(ExceptionMessage.MSG_004);
+        response.setErrorCode(EcologyResponseCode.Database.SQL_EXCEPTION);
+        response.setErrorMsg(ResponseMessage.MSG_004);
         return response;
     }
 
@@ -210,7 +204,22 @@ public class EcologyExceptionAspect {
     public ExceptionResponse handle(SQLSyntaxErrorException e) {
         log.error(e.getMessage());
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(EcologyExceptionCode.Database.SQL_SYNTAX_ERROR_EXCEPTION).setErrorMsg(ExceptionMessage.MSG_006);
+        response.setErrorCode(EcologyResponseCode.Database.SQL_SYNTAX_ERROR_EXCEPTION);
+        response.setErrorMsg(ResponseMessage.MSG_006);
         return response;
+    }
+
+    /**
+     * 自定义异常处理
+     * <p>
+     *
+     * @param e 自定义异常EcologyException
+     * @return {@link ExceptionResponse} 异常响应
+     */
+    @ExceptionHandler(value = EcologyException.class)
+    public ExceptionResponse handle(EcologyException e, HttpServletResponse httpServletResponse) {
+        // 设置HTTP响应状态码
+        httpServletResponse.setStatus(e.getHttpStatusCode());
+        return new ExceptionResponse(e);
     }
 }

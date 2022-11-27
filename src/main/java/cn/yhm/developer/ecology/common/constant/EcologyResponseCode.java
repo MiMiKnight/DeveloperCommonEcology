@@ -1,10 +1,8 @@
 package cn.yhm.developer.ecology.common.constant;
 
 
-import org.springframework.web.HttpRequestMethodNotSupportedException;
-
 /**
- * 异常代码
+ * 响应码
  * <p>
  * 错误码规则：HD.AABBCCC
  * <p>
@@ -21,7 +19,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
  * @author victor2015yhm@gmail.com
  * @since 2022-09-04 13:22:54
  */
-public interface EcologyExceptionCode {
+public interface EcologyResponseCode {
 
     /**
      * 成功响应码

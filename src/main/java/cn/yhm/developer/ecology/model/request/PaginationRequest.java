@@ -143,8 +143,10 @@ public interface PaginationRequest extends EcologyRequest {
                 || pageSize < 1L) {
             throw new IllegalArgumentException();
         }
-
-        response.setTotal(total).setPageIndex(actualPageIndex).setPageSize(pageSize).setResults(results);
+        response.setTotal(total);
+        response.setPageIndex(actualPageIndex);
+        response.setPageSize(pageSize);
+        response.setResults(results);
         return response;
     }
 

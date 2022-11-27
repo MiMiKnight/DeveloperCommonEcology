@@ -1,6 +1,6 @@
 package cn.yhm.developer.ecology.model.response;
 
-import cn.yhm.developer.ecology.common.constant.EcologyExceptionCode;
+import cn.yhm.developer.ecology.common.constant.EcologyResponseCode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,12 +20,12 @@ public class SuccessResponse implements EcologyResponse {
     /**
      * 成功响应码
      */
-    @JsonProperty(value = "success_code", index = 1, access = JsonProperty.Access.READ_ONLY)
-    private String successCode = EcologyExceptionCode.SUCCESS;
+    @JsonProperty(value = "success_code", index = 1)
+    private String successCode = EcologyResponseCode.SUCCESS;
 
     /**
      * 成功提示消息
      */
-    @JsonProperty(value = "success_msg", index = 2, access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty(value = "success_msg", index = 2)
     private String successMsg = "success";
 }

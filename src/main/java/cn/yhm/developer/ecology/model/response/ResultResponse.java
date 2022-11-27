@@ -17,6 +17,6 @@ public abstract class ResultResponse<T> implements EcologyResponse {
     /**
      * 结果
      */
-    @JsonProperty(value = "result", access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty(value = "result")
     private T result;
 }
